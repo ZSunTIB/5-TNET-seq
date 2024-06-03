@@ -159,8 +159,8 @@ mv $fq_R2\_R12_unmapped_c$T\_uniq_sort.bam $fq_R2\_R12_unmapped_c$T\_uniq.bam
 mv $fq_R2\_R12_unmapped_c$T\_uniq_sort.bam.bai $fq_R2\_R12_unmapped_c$T\_uniq.bam.bai
 ###############################################################################################
 #Generate the 3' end reads count of each coordiante for 5'end trimmed reads.
-bedtools genomecov -d -3 -strand + -ibam ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped_c$T\_uniq.bam \
-> ./Processed_5TNET_R21_unmapped/$fq_R2\_unmapped_c$T\_uniq_3End_Positive.wig
+bedtools genomecov -d -3 -strand + -ibam $fq_R2\_R12_unmapped_c$T\_uniq.bam \
+> $fq_R2\_unmapped_c$T\_uniq_3End_Positive.wig
 
-bedtools genomecov -d -3 -strand - -ibam ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped_c$T\_uniq.bam \
-> ./Processed_5TNET_R21_unmapped/$fq_R2\_unmapped_c$T\_uniq_3End_Negative.wig
+bedtools genomecov -d -3 -strand - -ibam $fq_R2\_R12_unmapped_c$T\_uniq.bam \
+> $fq_R2\_unmapped_c$T\_uniq_3End_Negative.wig
