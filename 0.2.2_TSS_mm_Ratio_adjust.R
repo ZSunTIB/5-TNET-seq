@@ -120,4 +120,4 @@ colnames(TSS_slippage)[7:9] = c("adj_TSS_RD","adj_TSS_mm_RD","adj_TSS_mm_ratio")
 
 TSS_slippage = TSS_slippage[,c(1,2,7:9)]
 ####################################################################################################################
-write.table(TSS_slippage,  file="./1.0.2_TSS_slippage_Ratio_adjust.csv.csv",  sep = ",", col.names = TRUE, row.names = FALSE, quote = FALSE)
+write.table(TSS_slippage,  file="./1.0.2_TSS_slippage_Ratio_adjust.csv",  sep = ",", col.names = TRUE, row.names = FALSE, quote = FALSE)
