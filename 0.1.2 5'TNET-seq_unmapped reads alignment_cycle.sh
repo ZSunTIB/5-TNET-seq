@@ -7,6 +7,10 @@ fq_R2=Raw_fastq_R2
 
 cd ./Processed_5TNET_R21_unmapped
 ##########################################################################################################
+#Remove reads that are shorter than 12-nt
+seqkit seq -m 12 $fq_R2\_R12_unmapped.fastq -o $fq_R2\_R12_unmapped_m12.fastq
+mv $fq_R2\_R12_unmapped_m12.fastq $fq_R2\_R12_unmapped.fastq
+
 cp $fq_R2\_R12_unmapped.fastq $fq_R2\_R12_unmapped_c0_unmapped.fastq
 
 for((cut=1; cut<=40; cut++))
@@ -37,6 +41,12 @@ do
 	
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_uniq.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_uniq.fastq
+	
+	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_uniq.fastq \
+	out=$fq_R2\_R12_unmapped_c$cut\_uniq_rem.fastq subs=0 dedupe=t
+
+	mv $fq_R2\_R12_unmapped_c$cut\_uniq_rem.fastq $fq_R2\_R12_unmapped_c$cut\_uniq.fastq
+
 	###
 	#Collect the read name and sequence.
 	awk 'NR%4==1 || NR%4==2 {print $0}' $fq_R2\_R12_unmapped_c$cut\_uniq.fastq \
@@ -64,6 +74,12 @@ do
 
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_multiple.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_multiple.fastq
+
+	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_multiple.fastq \
+	out=$fq_R2\_R12_unmapped_c$cut\_multiple_rem.fastq subs=0 dedupe=t
+
+	mv $fq_R2\_R12_unmapped_c$cut\_multiple_rem.fastq $fq_R2\_R12_unmapped_c$cut\_multiple.fastq
+
 	###
 	#Collect the read name and sequence.
 	awk 'NR%4==1 || NR%4==2 {print $0}' $fq_R2\_R12_unmapped_c$cut\_multiple.fastq \
@@ -87,6 +103,11 @@ do
 
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_unmapped.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_unmapped.fastq
+
+	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_unmapped.fastq \
+	out=$fq_R2\_R12_unmapped_c$cut\_unmapped_rem.fastq subs=0 dedupe=t
+
+	mv $fq_R2\_R12_unmapped_c$cut\_unmapped_rem.fastq $fq_R2\_R12_unmapped_c$cut\_unmapped.fastq
 	##########
 	rm 1.1_$fq_R2\_R12_unmapped_c$cut\_unmapped_2row.fastq 1.1_$fq_R2\_R12_unmapped_c$cut\_multiple_2row.fastq
 	rm 1.1_$fq_R2\_R12_unmapped_c$cut\_uniq_2row.fastq 1.2_$fq_R2\_R12_unmapped_c$cut\_unmapped_5end1.fastq
