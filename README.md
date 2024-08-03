@@ -4,7 +4,7 @@ Directions and custom scripts to process the 5'TNET-seq data. The raw fastq.gz f
 Following are versions of the operating system and packages used:
 macOS Monterey 12.0.1, bbmap 38.22, Flash 1.2.11, bowtie 1.2.2, STAR 2.6.1, bedtools 2.27.1, R 4.4.0
 
-Following is the procedure to process the 5'TENT-seq data:
+Following is the procedure for processing the 5'TENT-seq data:
 
 1. Run 0.0.1 5'TNET-seq_reads_aligner.sh to align the sequencing reads to E. coli genome;
 2. Run 0.0.2 5'TNET-seq_pause site_finder.R to find the RNAP pause sites;
@@ -14,3 +14,5 @@ Following is the procedure to process the 5'TENT-seq data:
 6. Run 0.1.4 5'TNET-seq_5'trimmed_1to3_mismatch_reads_extraction.sh to extract the reads that containing mismatches in the 1st, 2nd, or 3rd coordinates after 5' end trimming;
 7. Run 0.2.1_TSS_mm_Ratio_calculate.R to calculate the slippage ratio for each TSS region;
 8. Run 0.2.2_TSS_mm_Ratio_adjust.R to adjust the slippage ratio for each TSS region.
+
+The expected run time depends on the sequencing depth.
