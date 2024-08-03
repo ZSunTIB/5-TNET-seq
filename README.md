@@ -1,6 +1,11 @@
 # 5-TNET-seq
 Directions and custom scripts to process the 5'TNET-seq data. The raw fastq.gz files obtained on an NovaSeq 6000 platform (2 × 50 bp paired end) were processed to find the pause sites, extract the reads derived from productive reiterative initatioin and calculate the slippage ratio for each TSS region.
 
+Following are versions of the packages used:
+bbmap 38.22, Flash 1.2.11, bowtie 1.2.2, STAR 2.6.1, bedtools 2.27.1
+
+Following is the procedure to process the 5'TENT-seq data:
+
 1. Run 0.0.1 5'TNET-seq_reads_aligner.sh to align the sequencing reads to E. coli genome;
 2. Run 0.0.2 5'TNET-seq_pause site_finder.R to find the RNAP pause sites;
 3. Run 0.1.1 5'TNET-seq_unmapped reads alignment.sh to extract all reads that were unable to align to the genome;
