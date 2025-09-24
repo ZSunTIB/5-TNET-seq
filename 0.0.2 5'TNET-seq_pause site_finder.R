@@ -9,7 +9,7 @@ library("tidyverse")
 ####################################################################################################################
 #Read raw data of 3' end read count for each coordinate
 wig_plus = fread("./Processed data/Processed data_uniq_3end_Positive.wig")
-wig_minus = fread("./Processed data/Processed data_uniq_3end_Positive.wig")
+wig_minus = fread("./Processed data/Processed data_uniq_3end_Negative.wig")
 
 total_reads = sum(wig_plus$V3 + wig_minus$V3)
 ####################################################################################################################
@@ -85,3 +85,4 @@ write.table(pause_sites_rm_trRNA, file="./Processed data/Processed data_PS.csv",
 ############################################################################################################################
 rm(ps_minus,ps_minus_F,ps_minus_median,ps_minus_median_divide,ps_minus_median_divide_C)
 rm(ps_plus,ps_plus_F,ps_plus_median,ps_plus_median_divide,ps_plus_median_divide_C)
+
