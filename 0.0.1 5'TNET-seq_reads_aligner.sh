@@ -65,4 +65,4 @@ bedtools genomecov -d -3 -strand - -ibam ./Processed_5TNET_R21/$fq_R2\_R12_uniq.
 > ./Processed_5TNET_R21/$fq_R2\_R12_uniq_3end_Negative.wig
 ##########
 rm $fq_R1\_cutadapt.fastq $fq_R2\_cutadapt.fastq $fq_R2\_R12_cutadapt.fastq
-rm $fq_R2\_R12_cutadapt_remD.fastq $fq_R2\_R12_cutadapt_remD_6Ntrim.fastq $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.fastq
+rm $fq_R2\_R12_cutadapt_remD.fastq $fq_R2\_R12_cutadapt_remD_6Ntrim.fastq
