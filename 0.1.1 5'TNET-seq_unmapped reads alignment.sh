@@ -18,5 +18,13 @@ samtools view -f 4 $fq_R2\_R12_multiple_sort.sam -b -o ./Processed_5TNET_R21_unm
 #convert .bam file to .fastq file.
 bedtools bamtofastq -i ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped.bam -fq ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped.fastq
 
+awk 'BEGIN {OFS="\n"} 
+     !/^@/ {next} 
+     {header = $0; getline seq; getline plus; getline qual} 
+     !seen[header]++ {print header, seq, plus, qual}
+' ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped.fastq > ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped_rm.fastq
+
+mv ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped_rm.fastq ./Processed_5TNET_R21_unmapped/$fq_R2\_R12_unmapped.fastq
+
 rm $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM_multiple.sam $fq_R2\_R12_multiple_sort.sam
 #rm $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.fastq
