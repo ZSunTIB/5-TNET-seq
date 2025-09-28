@@ -23,7 +23,6 @@ We also generated two paired-end FASTQ files containing 18 paired reads extracte
 Coordinate	Nucleotides_Added	Read_Count	Situation
 
 +3,053,512	0	3	Regular transcription initiation
-
 	1	2	PRI; aligned to the genome
 	2	3	PRI; aligned to the genome
 	3	3	PRI; not aligned to the genome
