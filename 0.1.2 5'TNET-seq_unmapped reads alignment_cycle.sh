@@ -16,6 +16,17 @@ cp $fq_R2\_R12_unmapped.fastq $fq_R2\_R12_unmapped_c0_unmapped.fastq
 for((cut=1; cut<=40; cut++))
 do
 	T=$((cut-1))
+	# File check
+    input_file="${fq_R2}_R12_unmapped_c${T}_unmapped.fastq"
+    
+    if [ ! -f "$input_file" ]; then
+        echo "Error: File $input_file not found"
+        break
+    elif [ ! -s "$input_file" ]; then
+        echo "Stopping at cut $cut: $input_file is empty"
+        break
+    fi
+
 	#Collect the read name, 5' end nucleotide and whole sequence.
     awk 'NR%4==1 || NR%4==2 {print $0}' $fq_R2\_R12_unmapped_c$T\_unmapped.fastq \
     > 1.1_$fq_R2\_R12_unmapped_c$cut\_unmapped_2row.fastq
