@@ -20,8 +20,9 @@ The expected run time depends on the sequencing depth.
 The files Test_data_R1.fastq.gz and Test_data_R2.fastq.gz contain 10,000 paired-end reads extracted from the raw 5′TNET-seq data and were generated specifically for testing purposes.
 We also generated two paired-end FASTQ files containing 18 paired reads extracted from the raw sequencing data. Among these reads, 15 originated from the TSS at position +3053512, while the remaining 3 were derived from position −3924499 of the E. coli genome (NC_000913.2). The table below summarizes the reads, the number of nucleotides added, and their classification:
 
-Coordinate	Nucleotides Added	Read Count	Situation
+Coordinate	Nucleotides_Added	Read_Count	Situation
 +3,053,512	0	3	Regular transcription initiation
+
 	1	2	PRI; aligned to the genome
 	2	3	PRI; aligned to the genome
 	3	3	PRI; not aligned to the genome
