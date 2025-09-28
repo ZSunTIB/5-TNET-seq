@@ -16,3 +16,20 @@ Following is the procedure for processing the 5'TENT-seq data:
 8. Run 0.2.2_TSS_mm_Ratio_adjust.R to adjust the slippage ratio for each TSS region.
 
 The expected run time depends on the sequencing depth.
+
+The files Test_data_R1.fastq.gz and Test_data_R2.fastq.gz contain 10,000 paired-end reads extracted from the raw 5′TNET-seq data and were generated specifically for testing purposes.
+We also generated two paired-end FASTQ files containing 18 paired reads extracted from the raw sequencing data. Among these reads, 15 originated from the TSS at position +3053512, while the remaining 3 were derived from position −3924499 of the E. coli genome (NC_000913.2). The table below summarizes the reads, the number of nucleotides added, and their classification according to the situations noted by the reviewer:
+
+Coordinate	Nucleotides Added	Read Count	Situation
++3,053,512	0	3	Regular transcription initiation
+	1	2	PRI; aligned to the genome
+	2	3	PRI; aligned to the genome
+	3	3	PRI; not aligned to the genome
+	4	1	PRI; not aligned to the genome
+	6	1	PRI; not aligned to the genome
+	1	1	PRI; aligned to the genome; contains one mismatch downstream of the TIR
+	3	1	PRI; not aligned to the genome; identified as PCR duplicate
+−3,924,499	0	1	Regular transcription initiation
+	2	2	PRI; aligned to the genome
+
+The calculated slippage ratios by the pipeline were 78.57% (11/14) for the TSS at +3053512 and 66.67% (2/3) for the TSS at −3924499, demonstrating that the pipeline yields accurate and reliable slippage ratio estimates.
