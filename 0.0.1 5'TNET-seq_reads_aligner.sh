@@ -30,7 +30,7 @@ $fq_R2\_R12_cutadapt_remD_6Ntrim.fastq \
 
 bowtie /Users/sz/Data_analysis/Genome/Bowtie_genome/MG1655_v2 -q \
 $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.fastq \
---best --strata -m 1 -S $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.sam
+--best --strata -m 1 -v 2 -S $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.sam
 
 samtools sort $fq_R2\_R12_cutadapt_remD_6Ntrim_remEM.sam -o $fq_R2\_R12_sort.sam
 
