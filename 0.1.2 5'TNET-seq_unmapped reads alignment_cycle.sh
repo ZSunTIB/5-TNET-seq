@@ -45,7 +45,7 @@ do
 	#Align the residual read sequence to the genome and collect uniquely mapped reads.
 	bowtie /Users/sz/Data_analysis/Genome/Bowtie_genome/MG1655_v2 -q \
 	$fq_R2\_R12_unmapped_c$cut.fastq \
-	--best --strata -m 1 -S $fq_R2\_R12_unmapped_c$cut\_uniq.sam
+	--best --strata -m 1 -v 2 -S $fq_R2\_R12_unmapped_c$cut\_uniq.sam
 	
 	samtools view -F 4 $fq_R2\_R12_unmapped_c$cut\_uniq.sam \
 	-b -o $fq_R2\_R12_unmapped_c$cut\_uniq.bam
