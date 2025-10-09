@@ -53,8 +53,23 @@ do
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_uniq.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_uniq.fastq
 	
-	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_uniq.fastq \
-	out=$fq_R2\_R12_unmapped_c$cut\_uniq_rem.fastq subs=0 dedupe=t
+	awk '{
+    if (NR % 4 == 1) {
+        header = $0
+        if (!seen[header]++) {
+            print header
+            skip = 0
+        } else {
+            skip = 3
+        }
+    } else {
+        if (skip) {
+            skip--
+        } else {
+            print
+        }
+    }
+    }' $fq_R2\_R12_unmapped_c$cut\_uniq.fastq > $fq_R2\_R12_unmapped_c$cut\_uniq_rem.fastq
 
 	mv $fq_R2\_R12_unmapped_c$cut\_uniq_rem.fastq $fq_R2\_R12_unmapped_c$cut\_uniq.fastq
 
@@ -86,8 +101,23 @@ do
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_multiple.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_multiple.fastq
 
-	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_multiple.fastq \
-	out=$fq_R2\_R12_unmapped_c$cut\_multiple_rem.fastq subs=0 dedupe=t
+	awk '{
+    if (NR % 4 == 1) {
+        header = $0
+        if (!seen[header]++) {
+            print header
+            skip = 0
+        } else {
+            skip = 3
+        }
+    } else {
+        if (skip) {
+            skip--
+        } else {
+            print
+        }
+    }
+    }' $fq_R2\_R12_unmapped_c$cut\_multiple.fastq > $fq_R2\_R12_unmapped_c$cut\_multiple_rem.fastq
 
 	mv $fq_R2\_R12_unmapped_c$cut\_multiple_rem.fastq $fq_R2\_R12_unmapped_c$cut\_multiple.fastq
 
@@ -115,8 +145,23 @@ do
 	bedtools bamtofastq -i $fq_R2\_R12_unmapped_c$cut\_unmapped.bam \
 	-fq $fq_R2\_R12_unmapped_c$cut\_unmapped.fastq
 
-	clumpify.sh in=$fq_R2\_R12_unmapped_c$cut\_unmapped.fastq \
-	out=$fq_R2\_R12_unmapped_c$cut\_unmapped_rem.fastq subs=0 dedupe=t
+	awk '{
+    if (NR % 4 == 1) {
+        header = $0
+        if (!seen[header]++) {
+            print header
+            skip = 0
+        } else {
+            skip = 3
+        }
+    } else {
+        if (skip) {
+            skip--
+        } else {
+            print
+        }
+    }
+    }' $fq_R2\_R12_unmapped_c$cut\_unmapped.fastq > $fq_R2\_R12_unmapped_c$cut\_unmapped_rem.fastq
 
 	mv $fq_R2\_R12_unmapped_c$cut\_unmapped_rem.fastq $fq_R2\_R12_unmapped_c$cut\_unmapped.fastq
 	##########
