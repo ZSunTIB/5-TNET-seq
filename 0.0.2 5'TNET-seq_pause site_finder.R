@@ -11,6 +11,17 @@ library("tidyverse")
 wig_plus = fread("./Processed data/Processed data_uniq_3end_Positive.wig")
 wig_minus = fread("./Processed data/Processed data_uniq_3end_Negative.wig")
 
+wig_plus_un = fread("./Processed data/Raw_fastq_R2_unmapped_c40_uniq_3End_Positive.wig")
+wig_minus_un = fread("./Processed data/Raw_fastq_R2_unmapped_c40_uniq_3End_Negative.wig")
+
+wig_plus = wig_plus[, V4 := V3 + wig_plus_un$V3]
+wig_plus = wig_plus[, .(V1, V2, V4)]
+setnames(wig_plus, 3, "V3")
+
+wig_minus = wig_minus[, V4 := V3 + wig_minus_un$V3]
+wig_minus = wig_minus[, .(V1, V2, V4)]
+setnames(wig_minus, 3, "V3")
+
 total_reads = sum(wig_plus$V3 + wig_minus$V3)
 ####################################################################################################################
 #Set the variable cutoffs to pick up Pause sites.
@@ -85,4 +96,5 @@ write.table(pause_sites_rm_trRNA, file="./Processed data/Processed data_PS.csv",
 ############################################################################################################################
 rm(ps_minus,ps_minus_F,ps_minus_median,ps_minus_median_divide,ps_minus_median_divide_C)
 rm(ps_plus,ps_plus_F,ps_plus_median,ps_plus_median_divide,ps_plus_median_divide_C)
+
 
