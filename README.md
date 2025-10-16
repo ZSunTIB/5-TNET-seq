@@ -20,7 +20,8 @@ The expected run time depends on the sequencing depth.
 The files Test_data_R1.fastq.gz and Test_data_R2.fastq.gz contain 10,000 paired-end reads extracted from the raw 5′TNET-seq data and were generated specifically for testing purposes.
 We also generated two paired-end FASTQ files containing 18 paired reads extracted from the raw sequencing data. Among these reads, 15 originated from the TSS at position +3053512, while the remaining 3 were derived from position −3924499 of the E. coli genome (NC_000913.2). The table below summarizes the reads, the number of nucleotides added, and their classification:
 
-<img width="588" height="264" alt="image" src="https://github.com/user-attachments/assets/627c10c1-556f-4b9c-a3b6-f1aa189f7723" />
+<img width="588" height="264" alt="image" src="https://github.com/user-attachments/assets/89461dbb-83cb-42a9-90fb-0748ad4665a0" />
+
 
 
 The calculated slippage ratios by the pipeline were 78.57% (11/14) for the TSS at +3053512 and 66.67% (2/3) for the TSS at −3924499, demonstrating that the pipeline yields accurate and reliable slippage ratio estimates.
